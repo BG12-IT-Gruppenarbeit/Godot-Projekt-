@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://d1qmwg42t1c26"]
+
+[ext_resource type="PackedScene" uid="uid://yv3cy035e6eg" path="res://Enemies/enemy.tscn" id="1_43o87"]
+[ext_resource type="Script" path="res://Enemies/enemy_types/goblin.gd" id="2_roobf"]
+
+[node name="Goblin" instance=ExtResource("1_43o87")]
+modulate = Color(0, 1, 0, 1)
+script = ExtResource("2_roobf")
+player = null
+
+[node name="MeshInstance2D" parent="CollisionShape2D" index="0"]
+position = Vector2(1.90735e-06, 1.90735e-06)

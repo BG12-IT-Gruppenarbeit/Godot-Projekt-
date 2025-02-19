@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Weapon" load_steps=3 format=3 uid="uid://pmamuttrn5c6"]
+
+[ext_resource type="PackedScene" uid="uid://ue2780ehlotr" path="res://Bullets/bullet_default.tscn" id="1_8xrpt"]
+[ext_resource type="Script" path="res://Weapons/Weapon.gd" id="2_8r8rf"]
+
+[resource]
+script = ExtResource("2_8r8rf")
+damage = 1.0
+firerate = 5.0
+spread = 5
+blt_speed = 200
+name = "Pistol"
+bullet = ExtResource("1_8xrpt")

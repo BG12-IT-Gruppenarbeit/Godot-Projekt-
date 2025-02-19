@@ -1,0 +1,43 @@
+[gd_scene load_steps=8 format=3 uid="uid://yv3cy035e6eg"]
+
+[ext_resource type="Script" path="res://Enemies/enemy_default.gd" id="1_1gcmb"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wxmmu"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_jfawn"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_bjs2a"]
+
+[sub_resource type="MeshTexture" id="MeshTexture_cfatj"]
+mesh = SubResource("QuadMesh_bjs2a")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_a3r71"]
+texture = SubResource("MeshTexture_cfatj")
+modulate_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rkn8f"]
+bg_color = Color(1, 1, 1, 1)
+
+[node name="Enemy" type="RigidBody2D" groups=["Enemy"]]
+gravity_scale = 0.0
+script = ExtResource("1_1gcmb")
+hp_max = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_wxmmu")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="CollisionShape2D"]
+scale = Vector2(20, 20)
+mesh = SubResource("SphereMesh_jfawn")
+
+[node name="Enemy_healthbar" type="ProgressBar" parent="."]
+offset_left = -10.0
+offset_top = -15.0
+offset_right = 10.0
+offset_bottom = -11.0
+theme_override_styles/background = SubResource("StyleBoxTexture_a3r71")
+theme_override_styles/fill = SubResource("StyleBoxFlat_rkn8f")
+max_value = 10.0
+value = 10.0
+rounded = true
+show_percentage = false

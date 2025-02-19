@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Weapon" load_steps=3 format=3 uid="uid://t35t4kq0jylt"]
+
+[ext_resource type="PackedScene" uid="uid://dltm85c8n262y" path="res://Bullets/rocket.tscn" id="1_fh07x"]
+[ext_resource type="Script" path="res://Weapons/Weapon.gd" id="1_oyjpl"]
+
+[resource]
+script = ExtResource("1_oyjpl")
+damage = 1.0
+firerate = 2.0
+spread = 5
+blt_speed = 200
+name = "Rocket Launcher"
+bullet = ExtResource("1_fh07x")

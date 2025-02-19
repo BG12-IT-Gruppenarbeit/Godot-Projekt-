@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://dltm85c8n262y"]
+
+[ext_resource type="PackedScene" uid="uid://ue2780ehlotr" path="res://Bullets/bullet_default.tscn" id="1_10odc"]
+[ext_resource type="Script" path="res://Bullets/rocket.gd" id="2_xtb47"]
+[ext_resource type="PackedScene" uid="uid://b1upbv4ln1heb" path="res://particle/Explosion.tscn" id="3_47egq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dgpvl"]
+radius = 50.0
+
+[node name="Rocket" instance=ExtResource("1_10odc")]
+scale = Vector2(0.5, 0.5)
+script = ExtResource("2_xtb47")
+explosion = ExtResource("3_47egq")
+damage_explosion = 1
+
+[node name="MeshInstance2D" parent="." index="1"]
+modulate = Color(1, 0.670588, 0, 1)
+
+[node name="Explosion" type="Area2D" parent="." index="2"]
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Explosion" index="0"]
+shape = SubResource("CircleShape2D_dgpvl")

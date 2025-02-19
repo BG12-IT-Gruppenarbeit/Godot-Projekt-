@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://ue2780ehlotr"]
+
+[ext_resource type="Script" path="res://Bullets/bullet_default.gd" id="1_ar1k4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_y2a51"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_v6h7e"]
+
+[node name="BulletDefault" type="Area2D"]
+scale = Vector2(0.1, 0.1)
+script = ExtResource("1_ar1k4")
+speed = 200
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_y2a51")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+modulate = Color(1, 1, 0, 1)
+scale = Vector2(20, 20)
+mesh = SubResource("SphereMesh_v6h7e")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

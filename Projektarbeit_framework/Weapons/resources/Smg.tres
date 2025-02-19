@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Weapon" load_steps=3 format=3 uid="uid://bmqgm8w3htxr1"]
+
+[ext_resource type="PackedScene" uid="uid://ue2780ehlotr" path="res://Bullets/bullet_default.tscn" id="1_ntpqs"]
+[ext_resource type="Script" path="res://Weapons/Weapon.gd" id="1_tmrpt"]
+
+[resource]
+script = ExtResource("1_tmrpt")
+damage = 1.0
+firerate = 100.0
+spread = 10
+blt_speed = 0
+name = "SMG"
+bullet = ExtResource("1_ntpqs")

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Weapon" load_steps=3 format=3 uid="uid://k4wucx4l8rph"]
+
+[ext_resource type="Script" path="res://Weapons/Weapon.gd" id="1_mp55d"]
+[ext_resource type="PackedScene" uid="uid://ue2780ehlotr" path="res://Bullets/bullet_default.tscn" id="1_yni4t"]
+
+[resource]
+script = ExtResource("1_mp55d")
+damage = 1.0
+firerate = 10.0
+spread = 8
+blt_speed = 250
+name = "Rifle"
+bullet = ExtResource("1_yni4t")

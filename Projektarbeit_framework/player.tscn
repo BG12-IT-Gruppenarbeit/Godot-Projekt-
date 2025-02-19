@@ -1,0 +1,50 @@
+[gd_scene load_steps=5 format=3 uid="uid://53j6fe2nqk2l"]
+
+[ext_resource type="Script" path="res://player.gd" id="1_uf23x"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hroue"]
+
+[sub_resource type="PrismMesh" id="PrismMesh_l70wv"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_f6ocv"]
+font_size = 32
+
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
+script = ExtResource("1_uf23x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_hroue")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+position = Vector2(1.78814e-07, 5.96044e-08)
+rotation = -1.5708
+scale = Vector2(20, 20)
+mesh = SubResource("PrismMesh_l70wv")
+
+[node name="Firepoint" type="Marker2D" parent="."]
+position = Vector2(10, 0)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(3.5, 3.5)
+position_smoothing_enabled = true
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_left_margin = 0.05
+drag_top_margin = 0.05
+drag_right_margin = 0.05
+drag_bottom_margin = 0.05
+
+[node name="Shoot_timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_left = 937.0
+offset_top = 552.0
+offset_right = 1104.0
+offset_bottom = 601.0
+text = "test"
+label_settings = SubResource("LabelSettings_f6ocv")
+horizontal_alignment = 1
+vertical_alignment = 1
