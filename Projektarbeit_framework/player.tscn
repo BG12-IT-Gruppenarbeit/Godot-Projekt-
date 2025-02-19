@@ -40,10 +40,17 @@ one_shot = true
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Label" type="Label" parent="CanvasLayer"]
-offset_left = 937.0
-offset_top = 552.0
-offset_right = 1104.0
-offset_bottom = 601.0
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -219.0
+offset_top = -98.0
+offset_right = -52.0
+offset_bottom = -49.0
+grow_horizontal = 0
+grow_vertical = 0
 text = "test"
 label_settings = SubResource("LabelSettings_f6ocv")
 horizontal_alignment = 1
