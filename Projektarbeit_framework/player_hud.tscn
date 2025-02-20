@@ -1,13 +1,21 @@
-[gd_scene load_steps=4 format=3 uid="uid://cbfftk0w50y2w"]
+[gd_scene load_steps=6 format=3 uid="uid://cbfftk0w50y2w"]
 
 [ext_resource type="Texture2D" uid="uid://clgatlfxjh3ln" path="res://sprites/basic life bars a icons .png" id="1_flko3"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_004te"]
 font_size = 32
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_1f7aa"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_t1v2m"]
 atlas = ExtResource("1_flko3")
-region = Rect2(2, 4, 12, 10)
+region = Rect2(65, 21, 47, 7)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_phrxc"]
+atlas = ExtResource("1_flko3")
+region = Rect2(121, 52, 23, 5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7xxpq"]
+atlas = ExtResource("1_flko3")
+region = Rect2(99, 88, 11, 5)
 
 [node name="Playerhud" type="CanvasLayer"]
 
@@ -27,20 +35,32 @@ text = "test
 "
 label_settings = SubResource("LabelSettings_004te")
 
-[node name="Healthbar" type="HBoxContainer" parent="."]
-offset_left = 51.0
-offset_top = 40.0
-offset_right = 155.0
-offset_bottom = 82.0
-
-[node name="TextureRect" type="TextureRect" parent="Healthbar"]
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
 texture_filter = 1
-layout_mode = 2
-texture = SubResource("AtlasTexture_1f7aa")
-expand_mode = 3
+texture_repeat = 1
+offset_left = 24.0
+offset_top = 24.0
+offset_right = 71.0
+offset_bottom = 31.0
+texture = SubResource("AtlasTexture_t1v2m")
 
-[node name="TextureRect2" type="TextureRect" parent="Healthbar"]
-texture_filter = 1
-layout_mode = 2
-texture = SubResource("AtlasTexture_1f7aa")
-expand_mode = 3
+[node name="TextureProgressBar" type="TextureProgressBar" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 23.5
+offset_bottom = 6.0
+scale = Vector2(2, 1)
+value = 90.0
+nine_patch_stretch = true
+texture_progress = SubResource("AtlasTexture_phrxc")
+
+[node name="NinePatchRect2" type="NinePatchRect" parent="NinePatchRect"]
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 45.0
+offset_bottom = 6.0
+texture = SubResource("AtlasTexture_7xxpq")
+region_rect = Rect2(0, 0, 11, 5)
+axis_stretch_horizontal = 1

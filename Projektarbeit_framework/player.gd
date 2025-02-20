@@ -10,6 +10,9 @@ var wpn = wpn_paths.new()
 var held_wpns : Array = ["pistol","rifle"]
 var curr_wpn : int = 0
 
+var hp_max : int = 10
+var hp_curr : int = hp_max
+
 func _ready() -> void:
 	equip_weapon(held_wpns[curr_wpn])
 	pass
