@@ -1,13 +1,11 @@
 [gd_scene load_steps=5 format=3 uid="uid://53j6fe2nqk2l"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_uf23x"]
+[ext_resource type="PackedScene" uid="uid://cbfftk0w50y2w" path="res://player_hud.tscn" id="2_51602"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hroue"]
 
 [sub_resource type="PrismMesh" id="PrismMesh_l70wv"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_f6ocv"]
-font_size = 32
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_uf23x")
@@ -37,21 +35,4 @@ drag_bottom_margin = 0.05
 [node name="Shoot_timer" type="Timer" parent="."]
 one_shot = true
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="Label" type="Label" parent="CanvasLayer"]
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -219.0
-offset_top = -98.0
-offset_right = -52.0
-offset_bottom = -49.0
-grow_horizontal = 0
-grow_vertical = 0
-text = "test"
-label_settings = SubResource("LabelSettings_f6ocv")
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="Player_hud" parent="." instance=ExtResource("2_51602")]

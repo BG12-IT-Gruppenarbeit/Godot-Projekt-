@@ -1,10 +1,11 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1739955515
+::res://::1740047104
+credit.txt::TextFile::-1::1739958169::0::1::::<><>::
 icon.svg::CompressedTexture2D::1445902799185345964::1739279648::1739955517::1::::<><>::
-player.gd::GDScript::-1::1739954646::0::1::::<>CharacterBody2D<>::
-player.tscn::PackedScene::2164069968841333753::1739954705::0::1::::<><>::res://player.gd
-player_hud.tscn::PackedScene::4853690179736851252::1739954690::0::1::::<><>::
-world.tscn::PackedScene::5467424823558821659::1739954688::0::1::::<><>::uid://53j6fe2nqk2l::::res://player.tscn<>uid://d1qmwg42t1c26::::res://Enemies/enemy_types/goblin.tscn
+player.gd::GDScript::-1::1739958359::0::1::::<>CharacterBody2D<>::
+player.tscn::PackedScene::2164069968841333753::1739959196::0::1::::<><>::res://player.gd<>uid://cbfftk0w50y2w::::res://player_hud.tscn
+player_hud.tscn::PackedScene::4853690179736851252::1739966011::0::1::::<><>::uid://clgatlfxjh3ln::::res://sprites/basic life bars a icons .png
+world.tscn::PackedScene::5467424823558821659::1739959196::0::1::::<><>::uid://53j6fe2nqk2l::::res://player.tscn<>uid://d1qmwg42t1c26::::res://Enemies/enemy_types/goblin.tscn
 ::res://Bullets/::1739955407
 bullet_default.gd::GDScript::-1::1739440280::0::1::::bullet<>Area2D<>::
 bullet_default.tscn::PackedScene::1413732660068748375::1739954688::0::1::::<><>::res://Bullets/bullet_default.gd
@@ -20,9 +21,11 @@ goblin.tscn::PackedScene::9017970282304807773::1739954689::0::1::::<><>::uid://y
 ::res://particle/::1739955407
 Explosion.tscn::PackedScene::4253531862356413669::1739954690::0::1::::<><>::res://particle/explosion_particle.gd
 explosion_particle.gd::GDScript::-1::1739361183::0::1::::<>GPUParticles2D<>::
-::res://Weapons/::1739955407
+::res://sprites/::1739964160
+basic life bars a icons .png::CompressedTexture2D::5557339430551333339::1739959130::1739964160::1::::<><>::
+::res://Weapons/::1739959196
 Weapon.gd::GDScript::-1::1739351858::0::1::::Weapon<>Resource<>::
-Weapon.tscn::PackedScene::4717143152759428856::1739954689::0::1::::<><>::res://Weapons/Weapon.gd<>uid://ue2780ehlotr::::res://Bullets/bullet_default.tscn
+Weapon.tscn::PackedScene::4717143152759428856::1739959196::0::1::::<><>::res://Weapons/Weapon.gd<>uid://ue2780ehlotr::::res://Bullets/bullet_default.tscn
 wpn_path.gd::GDScript::-1::1739360758::0::1::::<>RefCounted<>::
 ::res://Weapons/resources/::1739955407
 Pistol.tres::Resource/Weapon::1077627697850885107::1739519052::0::1::::<><>::uid://ue2780ehlotr::::res://Bullets/bullet_default.tscn<>res://Weapons/Weapon.gd

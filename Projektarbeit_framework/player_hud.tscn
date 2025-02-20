@@ -1,25 +1,46 @@
-[gd_scene load_steps=2 format=3 uid="uid://cbfftk0w50y2w"]
+[gd_scene load_steps=4 format=3 uid="uid://cbfftk0w50y2w"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_5l41a"]
-font_size = 64
+[ext_resource type="Texture2D" uid="uid://clgatlfxjh3ln" path="res://sprites/basic life bars a icons .png" id="1_flko3"]
 
-[node name="Player_hud" type="Control"]
-layout_mode = 3
-anchors_preset = 15
+[sub_resource type="LabelSettings" id="LabelSettings_004te"]
+font_size = 32
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1f7aa"]
+atlas = ExtResource("1_flko3")
+region = Rect2(2, 4, 12, 10)
+
+[node name="Playerhud" type="CanvasLayer"]
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_left = -98.0
+offset_top = -88.0
+offset_right = -39.0
+offset_bottom = -43.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "test
+"
+label_settings = SubResource("LabelSettings_004te")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-follow_viewport_enabled = true
+[node name="Healthbar" type="HBoxContainer" parent="."]
+offset_left = 51.0
+offset_top = 40.0
+offset_right = 155.0
+offset_bottom = 82.0
 
-[node name="Label" type="Label" parent="CanvasLayer"]
-offset_left = 800.0
-offset_top = 496.0
-offset_right = 1095.0
-offset_bottom = 584.0
-text = "test"
-label_settings = SubResource("LabelSettings_5l41a")
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="TextureRect" type="TextureRect" parent="Healthbar"]
+texture_filter = 1
+layout_mode = 2
+texture = SubResource("AtlasTexture_1f7aa")
+expand_mode = 3
+
+[node name="TextureRect2" type="TextureRect" parent="Healthbar"]
+texture_filter = 1
+layout_mode = 2
+texture = SubResource("AtlasTexture_1f7aa")
+expand_mode = 3

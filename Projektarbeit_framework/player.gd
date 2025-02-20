@@ -48,5 +48,5 @@ func _process(delta: float) -> void:
 	
 func equip_weapon(index : String):
 	weapon = wpn.wpn_paths[index]
-	$CanvasLayer/Label.text = wpn.wpn_paths[index].name
+	$Player_hud/Label.text = wpn.wpn_paths[index].name
 	pass
