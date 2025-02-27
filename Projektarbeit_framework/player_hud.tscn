@@ -1,23 +1,30 @@
-[gd_scene load_steps=6 format=3 uid="uid://cbfftk0w50y2w"]
+[gd_scene load_steps=9 format=3 uid="uid://cbfftk0w50y2w"]
 
 [ext_resource type="Texture2D" uid="uid://clgatlfxjh3ln" path="res://sprites/basic life bars a icons .png" id="1_flko3"]
+[ext_resource type="Script" path="res://hud.gd" id="1_mbe7r"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_004te"]
 font_size = 32
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_t1v2m"]
+[sub_resource type="LabelSettings" id="LabelSettings_34aje"]
+font_size = 32
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nu1jb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mblin"]
+atlas = ExtResource("1_flko3")
+region = Rect2(121, 44, 3, 5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_siq0m"]
+atlas = ExtResource("1_flko3")
+region = Rect2(87, 88, 12, 5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ttj00"]
 atlas = ExtResource("1_flko3")
 region = Rect2(65, 21, 47, 7)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_phrxc"]
-atlas = ExtResource("1_flko3")
-region = Rect2(121, 52, 23, 5)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7xxpq"]
-atlas = ExtResource("1_flko3")
-region = Rect2(99, 88, 11, 5)
-
 [node name="Playerhud" type="CanvasLayer"]
+script = ExtResource("1_mbe7r")
 
 [node name="Label" type="Label" parent="."]
 anchors_preset = 3
@@ -35,32 +42,55 @@ text = "test
 "
 label_settings = SubResource("LabelSettings_004te")
 
-[node name="NinePatchRect" type="NinePatchRect" parent="."]
+[node name="Label2" type="Label" parent="."]
+offset_left = 274.0
+offset_top = 32.0
+offset_right = 337.0
+offset_bottom = 88.0
+size_flags_vertical = 1
+text = "text"
+label_settings = SubResource("LabelSettings_34aje")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HP" type="PanelContainer" parent="."]
+modulate = Color(1, 1, 1, 0.890196)
+clip_contents = true
+offset_left = 40.0
+offset_top = 32.0
+offset_right = 66.0
+offset_bottom = 39.0
+scale = Vector2(8, 8)
+theme_override_styles/panel = SubResource("StyleBoxEmpty_nu1jb")
+
+[node name="MarginContainer" type="MarginContainer" parent="HP"]
+layout_mode = 2
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_right = 1
+
+[node name="HP_bar" type="TextureProgressBar" parent="HP/MarginContainer"]
 texture_filter = 1
-texture_repeat = 1
-offset_left = 24.0
-offset_top = 24.0
-offset_right = 71.0
-offset_bottom = 31.0
-texture = SubResource("AtlasTexture_t1v2m")
-
-[node name="TextureProgressBar" type="TextureProgressBar" parent="NinePatchRect"]
-layout_mode = 1
-anchors_preset = -1
-offset_left = 1.0
-offset_top = 1.0
-offset_right = 23.5
-offset_bottom = 6.0
-scale = Vector2(2, 1)
-value = 90.0
+layout_mode = 2
+tooltip_text = "Hello World
+"
+theme_type_variation = &"bar"
+max_value = 8.0
+value = 8.0
 nine_patch_stretch = true
-texture_progress = SubResource("AtlasTexture_phrxc")
+texture_progress = SubResource("AtlasTexture_mblin")
 
-[node name="NinePatchRect2" type="NinePatchRect" parent="NinePatchRect"]
-offset_left = 1.0
-offset_top = 1.0
-offset_right = 45.0
-offset_bottom = 6.0
-texture = SubResource("AtlasTexture_7xxpq")
-region_rect = Rect2(0, 0, 11, 5)
+[node name="HP_seperator" type="NinePatchRect" parent="HP/MarginContainer"]
+texture_filter = 1
+layout_mode = 2
+texture = SubResource("AtlasTexture_siq0m")
+region_rect = Rect2(0, -1, 12, 7)
 axis_stretch_horizontal = 1
+
+[node name="NinePatchRect" type="NinePatchRect" parent="HP"]
+texture_filter = 1
+layout_mode = 2
+texture = SubResource("AtlasTexture_ttj00")
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
