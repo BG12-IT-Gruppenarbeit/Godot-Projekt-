@@ -4,5 +4,4 @@
 	"smg" : preload("res://Weapons/resources/Smg.tres"),
 	"rocket" : preload("res://Weapons/resources/Rocket_launcher.tres"),
 	"test" : preload("res://Weapons/resources/tes.tres"),
-	
 }

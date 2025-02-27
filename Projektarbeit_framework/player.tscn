@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://53j6fe2nqk2l"]
+[gd_scene load_steps=6 format=3 uid="uid://53j6fe2nqk2l"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_uf23x"]
 [ext_resource type="PackedScene" uid="uid://cbfftk0w50y2w" path="res://player_hud.tscn" id="2_51602"]
@@ -6,6 +6,8 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_hroue"]
 
 [sub_resource type="PrismMesh" id="PrismMesh_l70wv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g2po2"]
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_uf23x")
@@ -36,3 +38,8 @@ drag_bottom_margin = 0.05
 one_shot = true
 
 [node name="Player_hud" parent="." instance=ExtResource("2_51602")]
+
+[node name="Pickup_area" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pickup_area"]
+shape = SubResource("CircleShape2D_g2po2")

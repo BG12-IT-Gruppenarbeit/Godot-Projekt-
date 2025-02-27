@@ -31,6 +31,9 @@ func _physics_process(delta: float) -> void:
 		velocity.y = directiony * SPEED
 	else:
 		velocity.y = move_toward(velocity.y, 0, SPEED)
+		
+		
+	
 	
 	move_and_slide()
 	look_at(get_global_mouse_position())
@@ -47,9 +50,21 @@ func _process(delta: float) -> void:
 		else :
 			curr_wpn = 0
 		equip_weapon(held_wpns[curr_wpn])
-	
+		
+	if Input.is_action_just_pressed("interact"):
+		take_damage(1)
+		
+		
 	
 func equip_weapon(index : String):
 	weapon = wpn.wpn_paths[index]
 	$Player_hud/Label.text = wpn.wpn_paths[index].name
+	pass
+	
+func take_damage(amount : int):
+	$Player_hud.change_health(-amount)
+	if hp_curr <= 0:
+		queue_free()
+		
+func pick_up(obj : PackedScene):
 	pass

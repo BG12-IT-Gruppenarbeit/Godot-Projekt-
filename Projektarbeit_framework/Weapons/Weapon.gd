@@ -9,6 +9,7 @@ class_name Weapon
 @export var name : String
 
 @export var bullet : PackedScene
+@export var sprite : Texture2D
 
 func shoot(Firepoint : Node2D) :
 	var b = bullet.instantiate()

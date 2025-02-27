@@ -1,7 +1,12 @@
-[gd_resource type="Resource" script_class="Weapon" load_steps=3 format=3 uid="uid://pmamuttrn5c6"]
+[gd_resource type="Resource" script_class="Weapon" load_steps=5 format=3 uid="uid://pmamuttrn5c6"]
 
 [ext_resource type="PackedScene" uid="uid://ue2780ehlotr" path="res://Bullets/bullet_default.tscn" id="1_8xrpt"]
 [ext_resource type="Script" path="res://Weapons/Weapon.gd" id="2_8r8rf"]
+[ext_resource type="Texture2D" uid="uid://csau5fxwh12r6" path="res://sprites/Weapons.png" id="3_mwfxf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4a1ps"]
+atlas = ExtResource("3_mwfxf")
+region = Rect2(0, 118, 12, 10)
 
 [resource]
 script = ExtResource("2_8r8rf")
@@ -11,3 +16,4 @@ spread = 5
 blt_speed = 200
 name = "Pistol"
 bullet = ExtResource("1_8xrpt")
+sprite = SubResource("AtlasTexture_4a1ps")
