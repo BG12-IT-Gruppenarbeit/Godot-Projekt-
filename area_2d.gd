@@ -3,14 +3,19 @@ extends Area2D
 @export var speed = 200
 @export var damage = 5
 var target = Vector2.ZERO
+var direction = Vector2.ZERO
 
 
 func _ready():
-	var direction = (target - global_position).normalized()
-	var velocity = direction * speed
+	if target != Vector2.ZERO:
+		direction = (target - global_position).normalized()
+	else:
+		queue_free()
 
 func _physics_process(delta):
-	position += velocity * delta
+	position += direction * speed * delta
 
-func _process(delta: float) -> void:
-	pass
+func _on_body_entered(body: Node2D):
+	if body.name == "Enemy":
+		body.take_damage(damage)
+		queue_free()

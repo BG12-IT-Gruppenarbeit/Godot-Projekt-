@@ -25,7 +25,7 @@ func _process(delta):
 		if distance > attack_range:
 			move_towards_player()
 		else:
-			velocity = Vector2.ZERO
+			stop_moving()
 
 func move_towards_player():
 	if moving:
@@ -35,16 +35,16 @@ func move_towards_player():
 	var direction = (player.global_position - global_position).normalized()
 	var move_target = global_position +direction * move_distance
 	nav_agent.target_position = move_target
-
-func _physics_process(delta: float) -> void:
-	if nav_agent.is_navigation_finished():
-		moving = false
-		return
 	
-	var next_position = nav_agent.get_next_path_position()
-	var direction = (next_position - global_position).normalized()
-	velocity = direction * speed
-	move_and_slide()
+	var tween = get_tree().create_tween()
+	tween.tween_property(self, "position", move_target, move_distance / speed).set_trans(Tween.TRANS_LINEAR)
+	
+	tween.finished.connect(func():
+		moving = false
+		)
+
+func stop_moving():
+	moving = false
 
 func _on_Timer_timeout():
 	if player == null:
@@ -64,4 +64,5 @@ func shoot_projectile(proj_speed, damage):
 	projectile.position = projectile_spawn.global_position
 	projectile.target = player.global_position
 	projectile.speed = proj_speed
-	projectile.damage = damageget_tree().current_scene.add_child(projectile)
+	projectile.damage = damage
+	get_tree().current_scene.add_child(projectile)

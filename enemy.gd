@@ -2,9 +2,15 @@ extends CharacterBody2D
 
 
 @export var speed = 150.0
-@export var detection_range = 300
+@export var attack_range = 300 # Ab hier hört Bewegung auf und angriff beginnt
+@export var move_distance = 50 # bewegung pro bewegungsschritt
+@export var attack_cooldown = 2.0
+
+@export var detection_range = 300 
 
 var player = null
+var moving = false
+
 @onready var nav_agent = $NavigationAgent2D
 
 func _ready():

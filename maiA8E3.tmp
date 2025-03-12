@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://r1yb2nfw662p"]
+[gd_scene load_steps=20 format=4 uid="uid://r1yb2nfw662p"]
 
 [ext_resource type="Texture2D" uid="uid://y2qhil718rxs" path="res://simple_tileset_32x32_version1.1/tileset_version1.1.png" id="1_uxyfj"]
 [ext_resource type="Script" path="res://player.gd" id="2_3n626"]
@@ -7,7 +7,8 @@
 [ext_resource type="Script" path="res://enemy.gd" id="4_sxqgh"]
 [ext_resource type="Script" path="res://enemy_ranged.gd" id="6_fhqoo"]
 [ext_resource type="Texture2D" uid="uid://exftiggujtyb" path="res://4555b3010330326.png" id="6_kf2a6"]
-[ext_resource type="PackedScene" uid="uid://o62x7os00fbe" path="res://projectile.tscn" id="8_fe31y"]
+[ext_resource type="Script" path="res://area_2d.gd" id="8_16lgd"]
+[ext_resource type="Texture2D" uid="uid://tcfkoiy828e4" path="res://New_All_Fire_Bullet_Pixel_16x16/All_Fire_Bullet_Pixel_16x16_00.png" id="9_hql1n"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_dvq6v"]
 vertices = PackedVector2Array(838, 631.93, 4, 629.031, 4, 8.03125, 1135.95, 11.9609, 1133.86, 457.938, 1136, 457.953, 1136, 633.961, 838, 633.031)
@@ -627,6 +628,13 @@ region = Rect2(576, 882, 120, 120)
 [sub_resource type="CircleShape2D" id="CircleShape2D_ucnlr"]
 radius = 21.0
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_raxqo"]
+atlas = ExtResource("9_hql1n")
+region = Rect2(180, 211, 9, 9)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6aqaf"]
+radius = 5.0
+
 [node name="Main" type="Node2D"]
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
@@ -677,9 +685,13 @@ metadata/_edit_lock_ = true
 target_desired_distance = 59.64
 radius = 12.0
 
-[node name="Enemy_Ranged" type="AnimatableBody2D" parent="."]
+[node name="Enemy_Ranged" type="CharacterBody2D" parent="."]
 position = Vector2(630, 230)
 script = ExtResource("6_fhqoo")
+speed = null
+attack_range = null
+move_distance = null
+attack_cooldown = null
 
 [node name="Sprite2D" type="Sprite2D" parent="Enemy_Ranged"]
 position = Vector2(0, -1.90735e-06)
@@ -699,4 +711,16 @@ radius = 12.0
 
 [node name="Timer" type="Timer" parent="Enemy_Ranged"]
 
-[node name="Projectile" parent="." instance=ExtResource("8_fe31y")]
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("8_16lgd")
+speed = null
+damage = null
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D"]
+texture_filter = 1
+texture = SubResource("AtlasTexture_raxqo")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_6aqaf")
+metadata/_edit_lock_ = true
