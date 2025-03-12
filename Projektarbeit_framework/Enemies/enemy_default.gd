@@ -1,29 +1,30 @@
-extends RigidBody2D
+extends AnimatableBody2D
 
 class_name Enemy
 
 @export var hp_max : int
 @onready var hp : int = hp_max
 
+@export var xp = 0	#jeder gegner hat seine eigenen xp die er beim tot gibt
+
 var players : Array
 
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	$Enemy_healthbar.visible =  false
+	$Enemy_healthbar.visible =  false	#healthbar ist unsichtbar
 	$Enemy_healthbar.max_value = hp
-	players = get_tree().get_nodes_in_group("Player")
+	players = get_tree().get_nodes_in_group("Player")	#es werden alle spieler in einem array gesammelt
 	print(players)
 	print(players[0].position)
-	pass # Replace with function body.
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if hp <= 0:
+		for player in players:			#alle spieler kriegen xp
+			player.xp_curr += xp
 		queue_free()
 	if hp < hp_max:
-		$Enemy_healthbar.visible = true
+		$Enemy_healthbar.visible = true		#makes hp bar visible when hp < max_hp
 	
 	
 	$Enemy_healthbar.value = hp

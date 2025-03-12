@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://c6vqird28wadr"]
+
+[ext_resource type="PackedScene" uid="uid://dyk2m3f4xi188" path="res://Data/level_up_cards/card_default.tscn" id="1_ya2cu"]
+[ext_resource type="Script" path="res://Data/level_up_cards/ruby.gd" id="2_b67jg"]
+[ext_resource type="Texture2D" uid="uid://sclguc6i0cmt" path="res://sprites/standalone sprites/16x16/crystal_01d.png" id="2_l2j8p"]
+
+[node name="CardDefault" instance=ExtResource("1_ya2cu")]
+script = ExtResource("2_b67jg")
+
+[node name="Name" parent="VBoxContainer" index="0"]
+text = "Ruby"
+
+[node name="icon" parent="VBoxContainer/MarginContainer" index="0"]
+texture = ExtResource("2_l2j8p")
+
+[node name="Label" parent="VBoxContainer" index="2"]
+text = "dmg multiplier 
++0.5"

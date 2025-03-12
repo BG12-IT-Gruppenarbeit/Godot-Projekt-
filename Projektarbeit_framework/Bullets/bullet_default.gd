@@ -3,8 +3,7 @@ extends Area2D
 class_name bullet
 
 @export var speed = 400
-@export var damage_base = 1
-var damage_mult = 1
+@export var damage = 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -28,7 +27,7 @@ func _on_body_entered(body: Node2D) -> void:
 		on_enemy_hit(body)
 		
 func on_enemy_hit(enemy : Node2D):
-	enemy.hp -= damage_base * damage_mult
+	enemy.hp -= damage
 	print(enemy.hp)
 	queue_free()
 

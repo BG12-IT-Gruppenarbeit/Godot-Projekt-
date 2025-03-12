@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://dwoinxbe1g27y"]
+
+[ext_resource type="Script" path="res://Data/level_up_cards/lvl_pop_up.gd" id="1_ofg8k"]
+
+[node name="lvl_pop_up" type="CanvasLayer"]
+layer = 2
+script = ExtResource("1_ofg8k")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -185.5
+offset_bottom = 185.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 144
+alignment = 1
