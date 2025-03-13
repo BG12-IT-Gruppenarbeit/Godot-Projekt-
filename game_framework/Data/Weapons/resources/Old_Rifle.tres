@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="Weapon" load_steps=5 format=3 uid="uid://b4fh336xyega7"]
+
+[ext_resource type="PackedScene" uid="uid://ue2780ehlotr" path="res://Bullets/bullet_default.tscn" id="1_pohfm"]
+[ext_resource type="Script" path="res://Data/Weapons/Weapon.gd" id="2_7pj8p"]
+[ext_resource type="Texture2D" uid="uid://csau5fxwh12r6" path="res://sprites/Spritesheets/Weapons.png" id="3_wak8n"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yot67"]
+atlas = ExtResource("3_wak8n")
+region = Rect2(0, 83, 31, 13)
+
+[resource]
+script = ExtResource("2_7pj8p")
+damage = 1.0
+firerate = 6.0
+spread = 20
+blt_speed = 475
+blt_amt = 1
+name = "Old Rilfe"
+bullet = ExtResource("1_pohfm")
+sprite = SubResource("AtlasTexture_yot67")

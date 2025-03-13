@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://d01mmjgee1rok"]
+
+[ext_resource type="PackedScene" uid="uid://dyk2m3f4xi188" path="res://Data/level_up_cards/card_presets/card_default.tscn" id="1_y6wmy"]
+[ext_resource type="Script" path="res://Data/level_up_cards/card_presets/rare_card.gd" id="2_g3c6v"]
+
+[sub_resource type="Gradient" id="Gradient_65sok"]
+colors = PackedColorArray(0.600973, 0.0017098, 0.788248, 1, 0.607843, 0.607843, 0.615686, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_x1fgn"]
+gradient = SubResource("Gradient_65sok")
+fill_from = Vector2(1, 1)
+
+[node name="rare_card" instance=ExtResource("1_y6wmy")]
+script = ExtResource("2_g3c6v")
+
+[node name="NinePatchRect" parent="." index="0"]
+texture = SubResource("GradientTexture2D_x1fgn")
+
+[node name="icon" parent="VBoxContainer/MarginContainer" index="0"]
+texture = null
+
+[node name="Label" parent="VBoxContainer" index="2"]
+text = "default rare Item"

@@ -1,0 +1,207 @@
+[gd_scene load_steps=13 format=3 uid="uid://cbfftk0w50y2w"]
+
+[ext_resource type="Texture2D" uid="uid://clgatlfxjh3ln" path="res://sprites/Spritesheets/basic life bars a icons .png" id="1_flko3"]
+[ext_resource type="Script" path="res://hud.gd" id="1_mbe7r"]
+[ext_resource type="Texture2D" uid="uid://csau5fxwh12r6" path="res://sprites/Spritesheets/Weapons.png" id="2_u5w1w"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_004te"]
+font_size = 32
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_unqnd"]
+atlas = ExtResource("2_u5w1w")
+region = Rect2(0, 118, 12, 10)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nu1jb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mblin"]
+atlas = ExtResource("1_flko3")
+region = Rect2(148, 13, 23, 4)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ttj00"]
+atlas = ExtResource("1_flko3")
+region = Rect2(65, 21, 47, 7)
+
+[sub_resource type="LabelSettings" id="LabelSettings_34aje"]
+font_size = 25
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_xd0tb"]
+font_size = 25
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_cn6dv"]
+font_size = 25
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c0cxe"]
+atlas = ExtResource("1_flko3")
+region = Rect2(147, 33, 23, 4)
+
+[node name="Playerhud" type="CanvasLayer"]
+script = ExtResource("1_mbe7r")
+
+[node name="wpn_text" type="Label" parent="."]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -235.0
+offset_top = -91.0
+offset_right = -176.0
+offset_bottom = -46.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "test"
+label_settings = SubResource("LabelSettings_004te")
+
+[node name="wpn_sprite" type="TextureRect" parent="."]
+texture_filter = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -150.0
+offset_top = -92.0
+offset_right = -15.0
+offset_bottom = -43.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = SubResource("AtlasTexture_unqnd")
+stretch_mode = 5
+
+[node name="HP" type="PanelContainer" parent="."]
+modulate = Color(1, 1, 1, 0.890196)
+clip_contents = true
+offset_left = 40.0
+offset_top = 79.0
+offset_right = 56.0
+offset_bottom = 86.0
+scale = Vector2(8, 8)
+theme_override_styles/panel = SubResource("StyleBoxEmpty_nu1jb")
+
+[node name="MarginContainer" type="MarginContainer" parent="HP"]
+layout_mode = 2
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 1
+
+[node name="HP_bar" type="TextureProgressBar" parent="HP/MarginContainer"]
+texture_filter = 1
+layout_mode = 2
+tooltip_text = "Hello World
+"
+theme_type_variation = &"bar"
+max_value = 10.0
+value = 6.0
+nine_patch_stretch = true
+texture_progress = SubResource("AtlasTexture_mblin")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="HP"]
+texture_filter = 1
+layout_mode = 2
+texture = SubResource("AtlasTexture_ttj00")
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+offset_left = 49.0
+offset_top = 87.4315
+offset_right = 161.0
+offset_bottom = 127.432
+alignment = 1
+
+[node name="hp_curr" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "text"
+label_settings = SubResource("LabelSettings_34aje")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="slash" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+text = "/
+"
+label_settings = SubResource("LabelSettings_xd0tb")
+
+[node name="hp_max" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+text = "test
+"
+label_settings = SubResource("LabelSettings_cn6dv")
+
+[node name="XP" type="PanelContainer" parent="."]
+modulate = Color(1, 1, 1, 0.890196)
+clip_contents = true
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -384.0
+offset_top = 8.0
+offset_right = -288.0
+offset_bottom = 13.0
+grow_horizontal = 2
+scale = Vector2(8, 8)
+theme_override_styles/panel = SubResource("StyleBoxEmpty_nu1jb")
+
+[node name="MarginContainer" type="MarginContainer" parent="XP"]
+layout_mode = 2
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 1
+
+[node name="XP_bar" type="TextureProgressBar" parent="XP/MarginContainer"]
+texture_filter = 1
+layout_mode = 2
+tooltip_text = "Hello World
+"
+theme_type_variation = &"bar"
+value = 6.0
+nine_patch_stretch = true
+texture_progress = SubResource("AtlasTexture_c0cxe")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="XP"]
+texture_filter = 1
+layout_mode = 2
+texture = SubResource("AtlasTexture_ttj00")
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+
+[node name="XP_text" type="HBoxContainer" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -56.0
+offset_top = 10.5
+offset_right = 56.0
+offset_bottom = 45.5
+grow_horizontal = 2
+rotation = -0.000262588
+alignment = 1
+
+[node name="lvl_text" type="Label" parent="XP_text"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "Level: "
+label_settings = SubResource("LabelSettings_34aje")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="lvl_num" type="Label" parent="XP_text"]
+layout_mode = 2
+text = "0
+"
+label_settings = SubResource("LabelSettings_xd0tb")

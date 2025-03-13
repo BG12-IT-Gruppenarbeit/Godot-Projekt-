@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://vbywb0llj6rk"]
+
+[ext_resource type="PackedScene" uid="uid://d01mmjgee1rok" path="res://Data/level_up_cards/card_presets/rare_card.tscn" id="1_l6gph"]
+[ext_resource type="Script" path="res://Data/level_up_cards/smg_equip.gd" id="2_cq7v3"]
+[ext_resource type="Texture2D" uid="uid://csau5fxwh12r6" path="res://sprites/Spritesheets/Weapons.png" id="2_v2g0a"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_160ee"]
+atlas = ExtResource("2_v2g0a")
+region = Rect2(96, 101, 21, 11)
+
+[node name="Smg_equip" instance=ExtResource("1_l6gph")]
+script = ExtResource("2_cq7v3")
+
+[node name="Name" parent="VBoxContainer" index="0"]
+text = "SMG"
+
+[node name="icon" parent="VBoxContainer/MarginContainer" index="0"]
+texture = SubResource("AtlasTexture_160ee")
+
+[node name="Label" parent="VBoxContainer" index="2"]
+text = "Equips SMG as primary weapon"

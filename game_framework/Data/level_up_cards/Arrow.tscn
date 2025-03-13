@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://cq8anebp7gim1"]
+
+[ext_resource type="PackedScene" uid="uid://dyk2m3f4xi188" path="res://Data/level_up_cards/card_presets/card_default.tscn" id="1_jmskw"]
+[ext_resource type="Script" path="res://Data/level_up_cards/arrow.gd" id="2_6kud7"]
+[ext_resource type="Texture2D" uid="uid://vb07undct7ch" path="res://sprites/standalone sprites/16x16/arrow_01e.png" id="3_re2l4"]
+
+[node name="CardDefault" instance=ExtResource("1_jmskw")]
+script = ExtResource("2_6kud7")
+
+[node name="Name" parent="VBoxContainer" index="0"]
+text = "Arrow"
+
+[node name="icon" parent="VBoxContainer/MarginContainer" index="0"]
+texture = ExtResource("3_re2l4")
+
+[node name="Label" parent="VBoxContainer" index="2"]
+text = "spread
+-10"

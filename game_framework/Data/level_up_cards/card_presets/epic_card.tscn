@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://k2ik7ju0geuq"]
+
+[ext_resource type="PackedScene" uid="uid://dyk2m3f4xi188" path="res://Data/level_up_cards/card_presets/card_default.tscn" id="1_1aofn"]
+[ext_resource type="Script" path="res://Data/level_up_cards/card_presets/epic_card.gd" id="2_va73q"]
+
+[sub_resource type="Gradient" id="Gradient_y132k"]
+colors = PackedColorArray(0.769504, 0.463207, 0, 1, 0.607843, 0.607843, 0.615686, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_bt4bc"]
+gradient = SubResource("Gradient_y132k")
+fill_from = Vector2(1, 1)
+
+[node name="CardDefault" instance=ExtResource("1_1aofn")]
+script = ExtResource("2_va73q")
+
+[node name="NinePatchRect" parent="." index="0"]
+texture = SubResource("GradientTexture2D_bt4bc")
+
+[node name="Name" parent="VBoxContainer" index="0"]
+text = "Epic
+"
+
+[node name="Label" parent="VBoxContainer" index="2"]
+text = "this is the default layout for epic items"

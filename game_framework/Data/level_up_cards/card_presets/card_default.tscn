@@ -1,0 +1,94 @@
+[gd_scene load_steps=9 format=3 uid="uid://dyk2m3f4xi188"]
+
+[ext_resource type="Script" path="res://Data/level_up_cards/card_presets/card_default.gd" id="1_luit4"]
+
+[sub_resource type="Gradient" id="Gradient_w5go3"]
+offsets = PackedFloat32Array(0, 0.993506)
+colors = PackedColorArray(0.404511, 0.404511, 0.404511, 1, 0.60659, 0.60932, 0.616784, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_pwki2"]
+gradient = SubResource("Gradient_w5go3")
+fill_from = Vector2(1, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_l5k0o"]
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_t5v45"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fxbcy"]
+atlas = SubResource("CompressedTexture2D_t5v45")
+region = Rect2(209, 337, 15, 14)
+
+[sub_resource type="LabelSettings" id="LabelSettings_j3tpk"]
+font_size = 13
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Theme" id="Theme_736w3"]
+
+[node name="CardDefault" type="PanelContainer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -96.0
+offset_right = 96.0
+offset_bottom = 371.0
+grow_horizontal = 2
+script = ExtResource("1_luit4")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 2
+texture = SubResource("GradientTexture2D_pwki2")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Name" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Wood"
+label_settings = SubResource("LabelSettings_l5k0o")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(192, 128)
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 24
+
+[node name="icon" type="TextureRect" parent="VBoxContainer/MarginContainer"]
+texture_filter = 1
+layout_mode = 2
+texture = SubResource("AtlasTexture_fxbcy")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+custom_minimum_size = Vector2(192, 180)
+layout_mode = 2
+text = "this is nothing but purely a demonstration of what is possible in this bullshit ah text editor lol"
+label_settings = SubResource("LabelSettings_j3tpk")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+uppercase = true
+
+[node name="HFlowContainer" type="HFlowContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_736w3")
+
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_bottom = 20
+
+[node name="Button" type="Button" parent="VBoxContainer/MarginContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Select
+"
+
+[connection signal="pressed" from="VBoxContainer/MarginContainer2/Button" to="." method="_on_button_pressed"]

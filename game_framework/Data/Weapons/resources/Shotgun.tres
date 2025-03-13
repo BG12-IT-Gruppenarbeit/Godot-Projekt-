@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="Weapon" load_steps=5 format=3 uid="uid://lhdap55l6x7o"]
+
+[ext_resource type="PackedScene" uid="uid://ue2780ehlotr" path="res://Bullets/bullet_default.tscn" id="1_5eo76"]
+[ext_resource type="Script" path="res://Data/Weapons/Weapon.gd" id="2_ofd5a"]
+[ext_resource type="Texture2D" uid="uid://csau5fxwh12r6" path="res://sprites/Spritesheets/Weapons.png" id="3_6rrle"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vyj4f"]
+atlas = ExtResource("3_6rrle")
+region = Rect2(64, 85, 32, 11)
+
+[resource]
+script = ExtResource("2_ofd5a")
+damage = 0.3
+firerate = 1.0
+spread = 50
+blt_speed = 500
+blt_amt = 10
+name = "Shotgun"
+bullet = ExtResource("1_5eo76")
+sprite = SubResource("AtlasTexture_vyj4f")

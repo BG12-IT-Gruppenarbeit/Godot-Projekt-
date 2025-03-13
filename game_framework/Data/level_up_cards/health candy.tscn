@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://mp30jgglh7nj"]
+
+[ext_resource type="PackedScene" uid="uid://dyk2m3f4xi188" path="res://Data/level_up_cards/card_presets/card_default.tscn" id="1_3cpgx"]
+[ext_resource type="Script" path="res://Data/level_up_cards/health_up.gd" id="2_68twj"]
+[ext_resource type="Texture2D" uid="uid://0qrio8eimkjq" path="res://sprites/standalone sprites/16x16/candy_02g.png" id="3_ihgtq"]
+
+[node name="hp_up" instance=ExtResource("1_3cpgx")]
+script = ExtResource("2_68twj")
+
+[node name="Name" parent="VBoxContainer" index="0"]
+text = "Health Candy"
+
+[node name="icon" parent="VBoxContainer/MarginContainer" index="0"]
+texture = ExtResource("3_ihgtq")
+
+[node name="Label" parent="VBoxContainer" index="2"]
+text = "increases max hp by 2"
