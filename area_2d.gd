@@ -16,6 +16,6 @@ func _physics_process(delta):
 	position += direction * speed * delta
 
 func _on_body_entered(body: Node2D):
-	if body.name == "Enemy":
+	if body.name == "Player":
 		body.take_damage(damage)
 		queue_free()

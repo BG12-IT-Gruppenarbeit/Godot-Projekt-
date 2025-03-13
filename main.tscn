@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://r1yb2nfw662p"]
+[gd_scene load_steps=19 format=4 uid="uid://r1yb2nfw662p"]
 
 [ext_resource type="Texture2D" uid="uid://y2qhil718rxs" path="res://simple_tileset_32x32_version1.1/tileset_version1.1.png" id="1_uxyfj"]
 [ext_resource type="Script" path="res://player.gd" id="2_3n626"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://enemy.gd" id="4_sxqgh"]
 [ext_resource type="Script" path="res://enemy_ranged.gd" id="6_fhqoo"]
 [ext_resource type="Texture2D" uid="uid://exftiggujtyb" path="res://4555b3010330326.png" id="6_kf2a6"]
+[ext_resource type="Texture2D" uid="uid://bdbte4glvmfnc" path="res://Knight/Knight/noBKG_KnightAttack_strip.png" id="6_qim10"]
 [ext_resource type="PackedScene" uid="uid://o62x7os00fbe" path="res://projectile.tscn" id="8_fe31y"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_dvq6v"]
@@ -617,8 +618,12 @@ sources/1 = SubResource("TileSetAtlasSource_lxbeo")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_56sug"]
 size = Vector2(41, 40)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_5jh0k"]
-size = Vector2(40.5, 38)
+[sub_resource type="AtlasTexture" id="AtlasTexture_4iobp"]
+atlas = ExtResource("6_qim10")
+region = Rect2(486.447, 14.6578, 23.8973, 31.2258)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dw7kt"]
+size = Vector2(57, 65)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xpdoo"]
 atlas = ExtResource("6_kf2a6")
@@ -656,28 +661,31 @@ position = Vector2(-1.5, -1)
 shape = SubResource("RectangleShape2D_56sug")
 metadata/_edit_lock_ = true
 
-[node name="Enemy" type="AnimatableBody2D" parent="."]
-position = Vector2(471, 357)
+[node name="Enemy_near" type="RigidBody2D" parent="."]
+position = Vector2(489, 310)
 collision_layer = 7
 collision_mask = 7
 script = ExtResource("4_sxqgh")
 
-[node name="Sprite2D" type="Sprite2D" parent="Enemy"]
-position = Vector2(1.52588e-05, 1.00001)
-scale = Vector2(0.320313, 0.306641)
-texture = ExtResource("3_il3tn")
+[node name="Sprite2D" type="Sprite2D" parent="Enemy_near"]
+texture_filter = 1
+position = Vector2(9.53674e-07, 0.500022)
+scale = Vector2(2.8, 2.21875)
+texture = SubResource("AtlasTexture_4iobp")
 metadata/_edit_lock_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy"]
-position = Vector2(0, 1)
-shape = SubResource("RectangleShape2D_5jh0k")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy_near"]
+position = Vector2(2, 0)
+shape = SubResource("RectangleShape2D_dw7kt")
 metadata/_edit_lock_ = true
 
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="Enemy"]
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="Enemy_near"]
 target_desired_distance = 59.64
 radius = 12.0
 
-[node name="Enemy_Ranged" type="AnimatableBody2D" parent="."]
+[node name="Timer" type="Timer" parent="Enemy_near"]
+
+[node name="Enemy_Ranged" type="RigidBody2D" parent="."]
 position = Vector2(630, 230)
 script = ExtResource("6_fhqoo")
 

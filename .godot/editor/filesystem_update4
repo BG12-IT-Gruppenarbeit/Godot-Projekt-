@@ -1,0 +1,5 @@
+res://main.tscn
+res://enemy.gd
+res://area_2d.gd
+res://projectile.tscn
+res://enemy_ranged.gd
