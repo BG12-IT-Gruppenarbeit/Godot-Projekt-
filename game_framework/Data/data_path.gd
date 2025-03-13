@@ -20,6 +20,9 @@
 		"equip_smg" = preload("res://Data/level_up_cards/Smg_equip.tscn"),
 		"bullets_up" = preload("res://Data/level_up_cards/bullets_up.tscn"),
 		"boots" = preload("res://Data/level_up_cards/Boots.tscn"),
+		"equip_sniper" = preload("res://Data/level_up_cards/Sniper_equip.tscn"),
+		"equip_deagle" = preload("res://Data/level_up_cards/Deagle_equip.tscn"),
+		
 	},
 	common = {
 		"health candy" = preload("res://Data/level_up_cards/health candy.tscn"),

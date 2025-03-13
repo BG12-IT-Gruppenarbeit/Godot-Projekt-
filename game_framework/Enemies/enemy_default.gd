@@ -1,4 +1,4 @@
-extends AnimatableBody2D
+extends RigidBody2D
 
 class_name Enemy
 
@@ -11,8 +11,6 @@ var players : Array
 
 
 func _ready() -> void:
-	$Enemy_healthbar.visible =  false	#healthbar ist unsichtbar
-	$Enemy_healthbar.max_value = hp
 	players = get_tree().get_nodes_in_group("Player")	#es werden alle spieler in einem array gesammelt
 	print(players)
 	print(players[0].position)
@@ -23,8 +21,3 @@ func _process(delta: float) -> void:
 		for player in players:			#alle spieler kriegen xp
 			player.xp_curr += xp
 		queue_free()
-	if hp < hp_max:
-		$Enemy_healthbar.visible = true		#makes hp bar visible when hp < max_hp
-	
-	
-	$Enemy_healthbar.value = hp

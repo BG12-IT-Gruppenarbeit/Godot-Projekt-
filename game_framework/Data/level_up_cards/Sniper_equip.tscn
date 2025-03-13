@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://pq6t3gk2gusd"]
+
+[ext_resource type="PackedScene" uid="uid://d01mmjgee1rok" path="res://Data/level_up_cards/card_presets/rare_card.tscn" id="1_lxy0u"]
+[ext_resource type="Script" path="res://Data/level_up_cards/sniper_equip.gd" id="2_4fjsj"]
+[ext_resource type="Texture2D" uid="uid://csau5fxwh12r6" path="res://sprites/Spritesheets/Weapons.png" id="2_w0y1k"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jfwkd"]
+atlas = ExtResource("2_w0y1k")
+region = Rect2(161, 50, 47, 14)
+
+[node name="rare_card" instance=ExtResource("1_lxy0u")]
+script = ExtResource("2_4fjsj")
+
+[node name="Name" parent="VBoxContainer" index="0"]
+text = "Sniper
+"
+
+[node name="icon" parent="VBoxContainer/MarginContainer" index="0"]
+texture = SubResource("AtlasTexture_jfwkd")
+
+[node name="Label" parent="VBoxContainer" index="2"]
+text = "equips sniper rifle as primary weapon"

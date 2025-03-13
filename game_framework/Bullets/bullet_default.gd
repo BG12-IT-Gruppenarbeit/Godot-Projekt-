@@ -33,3 +33,7 @@ func on_enemy_hit(enemy : Node2D):
 
 func on_wall_hit():
 	queue_free()
+
+
+func _on_timer_timeout() -> void:
+	queue_free()
