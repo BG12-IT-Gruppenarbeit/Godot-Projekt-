@@ -1,14 +1,14 @@
 [gd_scene load_steps=19 format=4 uid="uid://r1yb2nfw662p"]
 
-[ext_resource type="Texture2D" uid="uid://y2qhil718rxs" path="res://simple_tileset_32x32_version1.1/tileset_version1.1.png" id="1_uxyfj"]
+[ext_resource type="Texture2D" path="res://simple_tileset_32x32_version1.1/tileset_version1.1.png" id="1_uxyfj"]
 [ext_resource type="Script" path="res://player.gd" id="2_3n626"]
-[ext_resource type="Texture2D" uid="uid://b153jtasvxx6k" path="res://simple_tileset_32x32_version1.1/fence_version1.1.png" id="2_o5e7m"]
-[ext_resource type="Texture2D" uid="uid://cqlenhb87l7kf" path="res://icon.svg" id="3_il3tn"]
+[ext_resource type="Texture2D" path="res://simple_tileset_32x32_version1.1/fence_version1.1.png" id="2_o5e7m"]
+[ext_resource type="Texture2D" path="res://icon.svg" id="3_il3tn"]
 [ext_resource type="Script" path="res://enemy.gd" id="4_sxqgh"]
 [ext_resource type="Script" path="res://enemy_ranged.gd" id="6_fhqoo"]
-[ext_resource type="Texture2D" uid="uid://exftiggujtyb" path="res://4555b3010330326.png" id="6_kf2a6"]
-[ext_resource type="Texture2D" uid="uid://bdbte4glvmfnc" path="res://Knight/Knight/noBKG_KnightAttack_strip.png" id="6_qim10"]
-[ext_resource type="PackedScene" uid="uid://o62x7os00fbe" path="res://projectile.tscn" id="8_fe31y"]
+[ext_resource type="Texture2D" path="res://4555b3010330326.png" id="6_kf2a6"]
+[ext_resource type="Texture2D" path="res://Knight/Knight/noBKG_KnightAttack_strip.png" id="6_qim10"]
+[ext_resource type="PackedScene" uid="uid://cq647xv2pqvs" path="res://projectile.tscn" id="8_fe31y"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_dvq6v"]
 vertices = PackedVector2Array(838, 631.93, 4, 629.031, 4, 8.03125, 1135.95, 11.9609, 1133.86, 457.938, 1136, 457.953, 1136, 633.961, 838, 633.031)

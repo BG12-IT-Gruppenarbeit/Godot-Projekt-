@@ -1,62 +1,25 @@
-extends RigidBody2D
+extends CharacterBody2D
 
+@export var dodge_chance: float = 0.3  # 30% Chance zum Ausweichen
+@export var block_chance: float = 0.2  # 20% Chance zum Blocken
+@export var counter_attack_chance: float = 0.15  # 15% Chance für Gegenangriff
 
-@export var speed = 150.0
-@export var attack_range = 70 # Ab hier hört Bewegung auf und angriff beginnt
-@export var move_distance = 50 # bewegung pro bewegungsschritt
-@export var attack_cooldown = 2.0
+func react_to_attack():
+	if randf() < dodge_chance:
+		dodge()
+	elif randf() < block_chance:
+		block()
+	elif randf() < counter_attack_chance:
+		counter_attack()
 
-var player = null
-var moving = false
-var attacking = false
+func dodge():
+	print("Gegner weicht aus!")
+	var dodge_direction = Vector2(randf_range(-1, 1), randf_range(-1, 1)).normalized()
+	velocity = dodge_direction * 150
+	move_and_slide()
 
-@onready var nav_agent = $NavigationAgent2D
-@onready var attack_timer = $Timer
+func block():
+	print("Gegner blockt den Angriff!")
 
-func _ready():
-	player = get_node("/root/Main/Player")
-	attack_timer.wait_time = attack_cooldown
-	attack_timer.start()
-
-func _process(delta):
-	if player and not attacking:
-		var distance = global_position.distance_to(player.global_position)
-		
-		if distance > attack_range:
-			move_towards_player()
-		else:
-			stop_moving()
-			attack()
-
-func move_towards_player():
-	if moving or attacking:
-		return
-	
-	moving = true
-	var direction = (player.global_position - global_position).normalized()
-	var move_target = global_position + direction * move_distance
-	nav_agent.target_position = move_target
-	
-	var tween = get_tree().create_tween()
-	tween.tween_property(self, "position", move_target, move_distance / float(speed)).set_trans(Tween.TRANS_LINEAR)
-	
-	tween.finished.connect(func():
-		moving = false
-	)
-
-func stop_moving():
-	moving = false
-
-func attack():
-	if attacking:
-		return
-	
-	attacking = true
-	stop_moving()
-	
-	await get_tree().create_timer(0.5).timeout
-	if global_position.distance_to(player.global_position) < attack_range:
-		#player.take_damage(10)
-		pass
-	
-	attacking = false
+func counter_attack():
+	print("Gegner startet einen Gegenangriff!")
