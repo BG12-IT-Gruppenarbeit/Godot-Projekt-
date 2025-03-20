@@ -67,7 +67,8 @@ func _process(delta: float) -> void:
 		equip_weapon(held_wpns[curr_wpn])
 		
 	if Input.is_action_just_pressed("interact"):
-		xp_curr = xp_max
+		#xp_curr = xp_max
+		pass
 		
 	if xp_curr >= xp_max:
 		lvl_up()		#lvls up if xp reaches limit

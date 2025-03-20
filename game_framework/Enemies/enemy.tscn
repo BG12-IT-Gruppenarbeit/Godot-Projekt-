@@ -7,7 +7,6 @@
 [sub_resource type="SphereMesh" id="SphereMesh_jfawn"]
 
 [node name="Enemy" type="RigidBody2D" groups=["Enemy"]]
-rotation = -4.69668
 gravity_scale = 0.0
 script = ExtResource("1_1gcmb")
 hp_max = 5

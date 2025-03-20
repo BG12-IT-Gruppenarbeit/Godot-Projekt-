@@ -28,7 +28,7 @@ func _on_body_entered(body: Node2D) -> void:
 		
 func on_enemy_hit(enemy : Node2D):
 	enemy.hp -= damage
-	print(enemy.hp)
+	enemy.hurt()
 	queue_free()
 
 func on_wall_hit():
