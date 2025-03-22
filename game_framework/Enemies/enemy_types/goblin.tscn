@@ -3,6 +3,21 @@
 [ext_resource type="PackedScene" uid="uid://yv3cy035e6eg" path="res://Enemies/enemy.tscn" id="1_43o87"]
 [ext_resource type="Script" path="res://Enemies/enemy_types/goblin.gd" id="2_roobf"]
 
+[sub_resource type="Animation" id="Animation_fwj2f"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionShape2D/MeshInstance2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 1, 0, 1)]
+}
+
 [sub_resource type="Animation" id="Animation_mtk18"]
 resource_name = "enemy_hurt"
 length = 0.3
@@ -19,21 +34,6 @@ tracks/0/keys = {
 "values": [Color(1, 0, 0, 1), Color(0, 1, 0, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_fwj2f"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CollisionShape2D/MeshInstance2D:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0, 1, 0, 1)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7m5kx"]
 _data = {
 "RESET": SubResource("Animation_fwj2f"),
@@ -43,6 +43,7 @@ _data = {
 [node name="Goblin" instance=ExtResource("1_43o87")]
 script = ExtResource("2_roobf")
 player = null
+damage = 3
 xp = 10
 
 [node name="MeshInstance2D" parent="CollisionShape2D" index="0"]

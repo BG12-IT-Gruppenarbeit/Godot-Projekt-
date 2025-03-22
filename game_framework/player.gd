@@ -25,6 +25,9 @@ var add_bullets : int = 0	#increases base amount of bullets per shot
 
 var lvl_scn : = preload("res://Data/level_up_cards/lvl_pop_up.tscn")		#screen for lvl up
 
+var invincible = false
+@export var invincibility_duration = 1.5
+
 func _ready() -> void:
 	equip_weapon(held_wpns[curr_wpn])
 	xp_max = pow(lvl * 10,1.3)		#sets xp max to be a function of x * 10 ^1.3
@@ -47,10 +50,13 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.y = move_toward(velocity.y, 0, movespeed)
 		
-		
+	
 	
 	
 	move_and_slide()
+	for i in get_slide_collision_count():
+		var collision = get_slide_collision(i)
+		var collision_inst = instance_from_id(collision.get_instance_id())
 	look_at(get_global_mouse_position())		#looks at mouse | much wow
 	
 func _process(delta: float) -> void:
@@ -73,6 +79,14 @@ func _process(delta: float) -> void:
 	if xp_curr >= xp_max:
 		lvl_up()		#lvls up if xp reaches limit
 		
+	
+	if !invincible:
+		for i in $Area2D.get_overlapping_bodies():
+			if i.is_in_group("Enemy"):
+				invincible = true
+				take_damage(i.damage)
+				$invincibility_timer.start(invincibility_duration)
+				$AnimationPlayer.play("invincible")
 	
 	
 func equip_weapon(index : String):
@@ -107,3 +121,9 @@ func lvl_up():
 	var pop_up = lvl_scn.instantiate()
 	add_child(pop_up)	#makes the level up screen appear
 	pass
+	
+
+
+func _on_invincibility_timer_timeout() -> void:
+	invincible = false
+	$AnimationPlayer.play("RESET")
