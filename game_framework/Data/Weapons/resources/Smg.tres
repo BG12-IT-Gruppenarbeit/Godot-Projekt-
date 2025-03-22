@@ -11,7 +11,7 @@ region = Rect2(96, 101, 21, 11)
 [resource]
 script = ExtResource("1_tmrpt")
 damage = 1.0
-firerate = 20.0
+firerate = 15.0
 spread = 40
 blt_speed = 500
 blt_amt = 1

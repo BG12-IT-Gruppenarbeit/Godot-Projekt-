@@ -11,7 +11,7 @@ region = Rect2(160, 50, 48, 14)
 [resource]
 script = ExtResource("2_7xv4j")
 damage = 5.0
-firerate = 0.2
+firerate = 0.75
 spread = 0
 blt_speed = 800
 blt_amt = 1

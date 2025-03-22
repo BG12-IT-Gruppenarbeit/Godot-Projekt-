@@ -18,4 +18,4 @@ texture = ExtResource("3_1agbr")
 
 [node name="Label" parent="VBoxContainer" index="2"]
 text = "dmg up 
-+0.3"
++0.5"
