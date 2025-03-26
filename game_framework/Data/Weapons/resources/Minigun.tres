@@ -11,8 +11,8 @@ region = Rect2(0, 68, 35, 12)
 [resource]
 script = ExtResource("2_ukd1r")
 damage = 0.25
-firerate = 500.0
-spread = 30
+firerate = 60.0
+spread = 35
 blt_speed = 500
 blt_amt = 1
 name = "Minigun"

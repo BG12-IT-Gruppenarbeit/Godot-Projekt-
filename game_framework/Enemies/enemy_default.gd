@@ -4,7 +4,7 @@ class_name Enemy
 
 @export var hp_max : int
 @onready var hp : int = hp_max
-
+@export var damage : int = 1
 @export var xp = 0	#jeder gegner hat seine eigenen xp die er beim tot gibt
 
 var players : Array
@@ -12,8 +12,6 @@ var players : Array
 
 func _ready() -> void:
 	players = get_tree().get_nodes_in_group("Player")	#es werden alle spieler in einem array gesammelt
-	print(players)
-	print(players[0].position)
 	#$CollisionShape2D/ProgressBar.max_value = hp_max
 
 
@@ -27,6 +25,8 @@ func _process(delta: float) -> void:
 		pass
 	#$dCollisionShape2D/ProgressBar.value = hp
 	
+	
 func hurt():
 	$AnimationPlayer.stop(true)
 	$AnimationPlayer.play("enemy_hurt")
+	

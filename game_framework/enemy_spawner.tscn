@@ -1,8 +1,28 @@
-[gd_scene load_steps=3 format=3 uid="uid://bwdy1wn5ixx2w"]
+[gd_scene load_steps=5 format=3 uid="uid://bwdy1wn5ixx2w"]
 
 [ext_resource type="Script" path="res://enemy_spawner.gd" id="1_pkbfv"]
 [ext_resource type="PackedScene" uid="uid://d1qmwg42t1c26" path="res://Enemies/enemy_types/goblin.tscn" id="2_oa84v"]
+[ext_resource type="Texture2D" uid="uid://dl4yfko4vgsh3" path="res://sprites/standalone sprites/light.png" id="3_t7c3b"]
 
-[node name="Enemy_spawner" type="Node2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_44cjv"]
+radius = 14.0
+
+[node name="Enemy_spawner" type="Marker2D"]
 script = ExtResource("1_pkbfv")
 enemy_scene = ExtResource("2_oa84v")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_44cjv")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+color = Color(0.90668, 0.0952274, 5.77569e-07, 1)
+energy = 3.0
+texture = ExtResource("3_t7c3b")
+texture_scale = 0.05
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
