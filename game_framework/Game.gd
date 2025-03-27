@@ -4,6 +4,7 @@ extends Node2D
 @onready var oid_lbl = $UI/MainMenu/MarginContainer/VBoxContainer/OID
 @onready var oid_input = $UI/MainMenu/MarginContainer/VBoxContainer/OidInput
 @onready var environment = $Environment
+@onready var delay_timer = $DelayTimer  # Timer-Node
 
 const GOBLIN = preload("res://Enemies/enemy_types/goblin.tscn")
 const PLAYER = preload("res://player.tscn")
@@ -16,31 +17,17 @@ var players: Array[Player] = []
 var enemies: Array[Enemy] = []
 
 func _ready() -> void:
-	await get_tree().create_timer(0).timeout
-	if main_menu and oid_input and oid_lbl and environment:
+	# Timer starten und auf das "timeout"-Signal warten
+	delay_timer.start()
+	await delay_timer.timeout  # Warten auf das "timeout"-Signal des Timers
+	
+	if $MultiplayerSpawner != null:
 		$MultiplayerSpawner.spawn_function = add_player
 	else:
-		print("Fehler: Einer der Knoten wurde nicht gefunden!")
-		return
-	
-	if Noray.is_connected():
-		print("Erfolgreich verbunden: ", Noray.oid)
-	else:
-		print("Verbindung zum Server konnte nicht hergestellt werden.")
-		return
+		print("MultiplayerSpawner is null!")
 	
 	await Multiplayer.noray_connected
-	if $UI and $UI/MainMenu and $UI/MainMenu/MarginContainer/VBoxContainer/OID and $UI/MainMenu/MarginContainer/VBoxContainer/OidInput and $Environment:
-		oid_lbl.text = Noray.oid
-	else:
-		print("Fehler: Einer der Knoten wurde nicht gefunden!")
-		return
-	
-	
-	
-
-func _process(delta: float) -> void:
-	pass
+	oid_lbl.text = Noray.oid
 
 func _on_host_pressed() -> void:
 	main_menu.hide()

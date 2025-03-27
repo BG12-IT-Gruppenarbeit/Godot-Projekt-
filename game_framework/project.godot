@@ -17,8 +17,8 @@ config/icon="res://sprites/standalone sprites/johnny.png"
 
 [autoload]
 
-Multiplayer="*res://Multiplayer.gd"
 Game="*res://Game.gd"
+Multiplayer="*res://Multiplayer.gd"
 BulletDefault="*res://Bullets/bullet_default.gd"
 Noray="*res://addons/netfox.noray/noray.gd"
 PacketHandshake="*res://addons/netfox.noray/packet-handshake.gd"
