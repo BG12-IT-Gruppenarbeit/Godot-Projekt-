@@ -1,7 +1,10 @@
 extends CharacterBody2D
 
+class_name Player
+
 var movespeed_base = 150
 @export var movespeed = 150
+@onready var camera = $Camera2D
 
 var weapon : Weapon
 var wpn_paths : = preload("res://Data/data_path.gd")
@@ -28,14 +31,25 @@ var lvl_scn : = preload("res://Data/level_up_cards/lvl_pop_up.tscn")		#screen fo
 var invincible = false
 @export var invincibility_duration = 1.5
 
+func _enter_tree() -> void:
+	set_multiplayer_authority(str(name).to_int())
+
 func _ready() -> void:
 	equip_weapon(held_wpns[curr_wpn])
 	xp_max = pow(lvl * 10,1.3)		#sets xp max to be a function of x * 10 ^1.3
 	$Player_hud/XP/MarginContainer/XP_bar.max_value = xp_max	#xp bar data
 	$Player_hud/XP_text/lvl_num.text = str(lvl)			#sets lvl text at xp  bar
+	
+	if not is_multiplayer_authority():
+		$MeshInstance2D.modulate = Color.RED
+		return
+	
+	$Player_hud.show()
+	camera.make_current()
 	pass
 
 func _physics_process(delta: float) -> void:
+	if not is_multiplayer_authority(): return
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var directionx := Input.get_axis("ui_left", "ui_right")
@@ -60,9 +74,12 @@ func _physics_process(delta: float) -> void:
 	look_at(get_global_mouse_position())		#looks at mouse | much wow
 	
 func _process(delta: float) -> void:
+	if not is_multiplayer_authority(): return
+	
 	if $Shoot_timer.is_stopped():
 		if Input.is_action_pressed("shoot"):
-			weapon.shoot($Firepoint, dmg_up, dmg_mult, spread, add_bullets)	#shoots the current weapon
+			shoot()
+			shoot.rpc()  # Schießt mit der aktuellen Waffe
 			$Shoot_timer.start((weapon.firerate / (weapon.firerate * weapon.firerate)) / firerate)	#sets a shoot timer so u cant just spam shoot 
 		
 	if Input.is_action_just_pressed("weapon_swap"):			#swaps primary and secondary weapon
@@ -94,7 +111,20 @@ func equip_weapon(index : String):
 	$Player_hud/wpn_text.text = wpn.wpn_paths[index].name
 	$Player_hud/wpn_sprite.texture = wpn.wpn_paths[index].sprite
 	pass
-	
+
+@rpc("any_peer")
+func shoot():
+	weapon.shoot($Firepoint, dmg_up, dmg_mult, spread, add_bullets)
+	BulletDefault.set_shooter(self)
+	if is_multiplayer_authority():
+		hit_enemy()
+
+func hit_enemy():
+	var enemies_in_range = get_tree().get_nodes_in_group("Enemies")  # Alle Feinde holen, die zur Gruppe "Enemies" gehören
+	for enemy in enemies_in_range:
+		# Ruf die "hurt"-Methode auf dem Feind per RPC auf
+		enemy.hurt.rpc()  # Schaden am Feind anwenden, über RPC an alle Clients
+
 func take_damage(amount : int):		#reduces hp
 	change_health(-amount)
 	if hp_curr <= 0:

@@ -7,8 +7,9 @@ class_name Enemy
 @export var damage : int = 1
 @export var xp = 0	#jeder gegner hat seine eigenen xp die er beim tot gibt
 
-var players : Array
+var last_hit_player : Player = null  # Den Spieler speichern, der den letzten Treffer ausführt
 
+var players : Array
 
 func _ready() -> void:
 	players = get_tree().get_nodes_in_group("Player")	#es werden alle spieler in einem array gesammelt
@@ -25,7 +26,8 @@ func _process(delta: float) -> void:
 		pass
 	#$dCollisionShape2D/ProgressBar.value = hp
 	
-	
+
+@rpc("any_peer", "call_local")
 func hurt():
 	$AnimationPlayer.stop(true)
 	$AnimationPlayer.play("enemy_hurt")

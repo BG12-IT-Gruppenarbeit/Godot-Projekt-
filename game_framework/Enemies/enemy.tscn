@@ -1,10 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://yv3cy035e6eg"]
+[gd_scene load_steps=5 format=3 uid="uid://yv3cy035e6eg"]
 
 [ext_resource type="Script" path="res://Enemies/enemy_default.gd" id="1_1gcmb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wxmmu"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_jfawn"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_itql8"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:rotation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
 
 [node name="Enemy" type="RigidBody2D" groups=["Enemy"]]
 gravity_scale = 0.0
@@ -18,3 +26,6 @@ shape = SubResource("CircleShape2D_wxmmu")
 [node name="MeshInstance2D" type="MeshInstance2D" parent="CollisionShape2D"]
 scale = Vector2(20, 20)
 mesh = SubResource("SphereMesh_jfawn")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_itql8")
