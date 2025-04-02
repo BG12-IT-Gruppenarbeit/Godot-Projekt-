@@ -37,7 +37,7 @@ func _enter_tree() -> void:
 func _ready() -> void:
 	equip_weapon(held_wpns[curr_wpn])
 	xp_max = pow(lvl * 10,1.3)		#sets xp max to be a function of x * 10 ^1.3
-	$Player_hud/XP/MarginContainer/XP_bar.max_value = xp_max	#xp bar data
+	$Player_hud/XP/MarginContainer/XP_bar.max_value = xp_max	#xp bar datasw
 	$Player_hud/XP_text/lvl_num.text = str(lvl)			#sets lvl text at xp  bar
 	
 	if not is_multiplayer_authority():
@@ -78,7 +78,6 @@ func _process(delta: float) -> void:
 	
 	if $Shoot_timer.is_stopped():
 		if Input.is_action_pressed("shoot"):
-			shoot()
 			shoot.rpc()  # Schießt mit der aktuellen Waffe
 			$Shoot_timer.start((weapon.firerate / (weapon.firerate * weapon.firerate)) / firerate)	#sets a shoot timer so u cant just spam shoot 
 		
@@ -112,13 +111,14 @@ func equip_weapon(index : String):
 	$Player_hud/wpn_sprite.texture = wpn.wpn_paths[index].sprite
 	pass
 
-@rpc("any_peer")
+@rpc("any_peer", "call_local")
 func shoot():
 	weapon.shoot($Firepoint, dmg_up, dmg_mult, spread, add_bullets)
 	BulletDefault.set_shooter(self)
 	if is_multiplayer_authority():
-		hit_enemy()
+		hit_enemy.rpc()
 
+@rpc("any_peer", "call_local")
 func hit_enemy():
 	var enemies_in_range = get_tree().get_nodes_in_group("Enemies")  # Alle Feinde holen, die zur Gruppe "Enemies" gehören
 	for enemy in enemies_in_range:

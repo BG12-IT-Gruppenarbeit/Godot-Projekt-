@@ -8,15 +8,15 @@ const NORAY_PORT = 8890
 var is_host = false
 var external_oid = ""
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
+func _ready():
 	Noray.on_connect_to_host.connect(on_noray_connected)
 	Noray.on_connect_nat.connect(handle_nat_connection)
 	Noray.on_connect_relay.connect(handle_relay_connection)
-	pass # Replace with function body.
+	
+	Noray.connect_to_host(NORAY_ADDRESS, NORAY_PORT)
 
 func on_noray_connected():
-	print("Connected to Server")
+	print("Connected to Noray server")
 	
 	Noray.register_host()
 	await Noray.on_pid
@@ -24,7 +24,7 @@ func on_noray_connected():
 	noray_connected.emit()
 
 func host():
-	print("hosting")
+	print("Hosting")
 	
 	var peer = ENetMultiplayerPeer.new()
 	peer.create_server(Noray.local_port)
@@ -42,6 +42,7 @@ func handle_nat_connection(address, port):
 		print("NAT failed, using relay")
 		Noray.connect_relay(external_oid)
 		err = OK
+	
 	return err
 
 func handle_relay_connection(address, port):
@@ -50,13 +51,12 @@ func handle_relay_connection(address, port):
 func connect_to_server(address, port):
 	var err = OK
 	
-	# set the address we want to send the Packet to
 	if !is_host:
 		var udp = PacketPeerUDP.new()
 		udp.bind(Noray.local_port)
 		udp.set_dest_address(address, port)
 		
-		err = await  PacketHandshake.over_packet_peer(udp)
+		err = await PacketHandshake.over_packet_peer(udp)
 		udp.close()
 		
 		if err != OK:
@@ -76,6 +76,6 @@ func connect_to_server(address, port):
 		
 		return OK
 	else:
-		err = await  PacketHandshake.over_enet(multiplayer.multiplayer_peer.host, address, port)
+		err = await PacketHandshake.over_enet(multiplayer.multiplayer_peer.host, address, port)
 	
 	return err
